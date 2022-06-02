@@ -1,0 +1,5 @@
+export const ActionTypes = {
+  SET_GROUPS: "SET_GROUPS",
+  SET_USER: "SET_USER",
+  SELECTED_GROUP: "SELECTED_GROUP"
+};

@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+.form-control {
+    @apply border rounded-md py-2 px-4 w-full outline-none focus:border-blue-400 text-gray-500 text-sm
+}
+
+.btn-primary {
+    @apply border rounded-md py-2 px-4 w-full text-white text-sm bg-blue-500 hover:bg-blue-600 duration-200 focus:outline-blue-300 outline-2
+}
+
+.btn-secondary {
+    @apply border border-blue-400 rounded-md py-2 px-4 w-full text-blue-400 font-semibold text-sm hover:bg-blue-50 duration-200 focus:outline-blue-300 outline-2
+}
+
+.link {
+    @apply text-blue-400 hover:text-blue-600 duration-200 cursor-pointer
+}
+
+.social-icon {
+    @apply text-gray-400 hover:text-gray-600 cursor-pointer
+}
+
+.paginationBttns {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+  }
+  
+  .paginationBttns a {
+    padding: 10px;
+    margin: 8px;
+    border-radius: 5px;
+    border: 1px solid #2b2eff;
+    color: #2b2eff;
+    cursor: pointer;
+  }
+  
+  .paginationBttns a:hover {
+    color: white;
+    background-color: #2b2eff;
+  }
+  
+  .paginationActive a {
+    color: white;
+    background-color: #2b2eff;
+  }
