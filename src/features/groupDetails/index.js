@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 
 const GroupDetails = () => {
     const { groupId } = useParams();
+    const user = useSelector((state) => state.userInfo.user);
 
     const [groupLock, setGroupLock] = useState([])
     const [allLock, setLock] = useState([])
@@ -35,7 +36,8 @@ const GroupDetails = () => {
         const kisiClient = new Kisi()
 
         setOpen(false)
-        kisiClient.signIn({ domain: 'test-task', email: 'testaccount+1@kisi.io', password: 'uA3JlShxKn' }).then(() => {
+        kisiClient.signIn({ domain: 'test-task', email: user.email, password: user.password }).then((info) => {
+
             kisiClient.post('group_locks', {
                 "group_lock": {
                     "group_id": groupId,
@@ -62,7 +64,8 @@ const GroupDetails = () => {
 
     const fetchGroupDetails = async () => {
 
-        kisiClient.signIn({ domain: 'test-task', email: 'testaccount+1@kisi.io', password: 'uA3JlShxKn' }).then(() => {
+        kisiClient.signIn({ domain: 'test-task', email: user.email, password: user.password }).then((info) => {
+
             kisiClient.get('locks').then((locks) => {
                 setLock(locks['data'])
             }, error => {
@@ -76,8 +79,8 @@ const GroupDetails = () => {
                 console.log(`ERROR ${JSON.stringify(error)}`)
             })
 
-            kisiClient.get(`groups`, { id: groupId }).then((group) => {
-                setGroupName(group['data'][0]['name'])
+            kisiClient.get(`groups/${groupId}`).then((group) => {
+                setGroupName(group['name'])
             }, error => {
                 console.log(`ERROR ${JSON.stringify(error)}`)
             })

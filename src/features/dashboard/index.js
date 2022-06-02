@@ -31,7 +31,6 @@ const Dashboard = () => {
         const kisiClient = new Kisi()
 
         kisiClient.signIn({ domain: 'test-task', email: user.email, password: user.password }).then((info) => {
-            console.log("INFO " + JSON.stringify(info))
             kisiClient.get("groups").then((groups) => {
                 dispatch(setGroups(groups['data']));
             });
